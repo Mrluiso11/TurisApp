@@ -61,6 +61,7 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
            @Override
            public void onClick(View view) {
                Intent intent = new Intent(contexto,atv_info_sitios.class);
+               intent.putExtra("titulo",lista.get(position).getTitulo());
                contexto.startActivity(intent);
            }
        });

@@ -3,6 +3,7 @@ package com.lagn.turisapp;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class atv_info_sitios extends AppCompatActivity {
  Toolbar toolbar;
+ TextView lbl_info_titulo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +28,16 @@ public class atv_info_sitios extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
         toolbar = findViewById(R.id.toolbar);
+        lbl_info_titulo=findViewById(R.id.lbl_info_titulo);
+        lbl_info_titulo.setText(getIntent().getStringExtra("titulo"));
+
         setSupportActionBar(toolbar);
        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24);
         toolbar.setNavigationOnClickListener(view -> {
-            Toast.makeText(this, "Volver", Toast.LENGTH_SHORT).show();
+
             finish();
         });
     }
