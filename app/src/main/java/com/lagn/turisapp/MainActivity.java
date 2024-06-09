@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-/*
+
         // Inicializar RecyclerView
         recSitios = findViewById(R.id.recSitios);
 
@@ -47,15 +47,15 @@ public class MainActivity extends AppCompatActivity {
         // Configurar adaptador y RecyclerView
         SitiosAdapter adaptador = new SitiosAdapter(this, sitios);
         recSitios.setLayoutManager(new LinearLayoutManager(this));
-        recSitios.setAdapter(adaptador);*/
-
+        recSitios.setAdapter(adaptador);
+/*
         recSitios=findViewById(R.id.recSitios);
         ArrayList<Sitios> sitios = new ArrayList<>();
         sitios.add(new Sitios("Canal de panamá","Michael Cordones","el canal de panampá",0,getDrawable(R.drawable.canaldepanama), getDrawable(R.drawable.user)));
         sitios.add(new Sitios("Boquete","Edgardo Hernandez","Boquete Chiriqui",0,getDrawable(R.drawable.boquete), getDrawable(R.drawable.user2)));
         SitiosAdapter adaptador =  new SitiosAdapter(this,sitios);
         recSitios.setLayoutManager(new LinearLayoutManager(this));
-        recSitios.setAdapter(adaptador);
+        recSitios.setAdapter(adaptador);*/
     }
 
 
