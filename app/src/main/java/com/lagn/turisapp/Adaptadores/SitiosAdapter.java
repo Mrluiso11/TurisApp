@@ -1,11 +1,15 @@
 package com.lagn.turisapp.Adaptadores;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
+
 import com.lagn.turisapp.*;
 import com.lagn.turisapp.Clases.Sitios;
 
@@ -35,7 +39,7 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull SitiosAdapter.ViewHolder holder, int position) {
-        holder.lbl_autor.setText(lista.get(position).getTitulo());
+        holder.lbl_titulo.setText(lista.get(position).getTitulo());
         holder.lbl_autor.setText(lista.get(position).getAutor());
         holder.lbl_like.setText(String.valueOf(lista.get(position).getMegusta()));
 
@@ -46,6 +50,7 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return lista.size();
+
     }
     public static  class ViewHolder extends RecyclerView.ViewHolder{
         TextView lbl_titulo,lbl_autor,lbl_like;
