@@ -1,6 +1,7 @@
 package com.lagn.turisapp.Adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,24 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
 
         holder.img_lugares.setImageDrawable(lista.get(position).getImagen());
         holder.img_user.setImageDrawable(lista.get(position).getIcono());
+
+       holder.img_like.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               int cantidad = Integer.parseInt(holder.lbl_like.getText().toString());
+               cantidad ++;
+               holder.lbl_like.setText(String.valueOf(cantidad));
+           }
+       });
+
+
+       holder.img_lugares.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent = new Intent(contexto,atv_info_sitios.class);
+               contexto.startActivity(intent);
+           }
+       });
     }
 
     @Override
