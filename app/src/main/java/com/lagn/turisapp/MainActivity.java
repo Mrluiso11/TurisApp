@@ -28,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        recSitios.findViewById(R.id.recSitios);
+        recSitios=findViewById(R.id.recSitios);
         ArrayList<Sitios> sitios = new ArrayList<>();
-        sitios.add(new Sitios("Canal de panamá","Michael Cordones","el canal de panampá",0,getDrawable(R.drawable.canaldepanama), getDrawable(R.drawable.user)));
-        sitios.add(new Sitios("Canal de panamá","Michael Cordones","el canal de panampá",0,getDrawable(R.drawable.canaldepanama), getDrawable(R.drawable.user)));
         sitios.add(new Sitios("Canal de panamá","Michael Cordones","el canal de panampá",0,getDrawable(R.drawable.canaldepanama), getDrawable(R.drawable.user)));
         SitiosAdapter adaptador =  new SitiosAdapter(this,sitios);
         recSitios.setLayoutManager(new LinearLayoutManager(this));
