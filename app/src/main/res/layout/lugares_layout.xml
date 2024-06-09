@@ -19,7 +19,6 @@
                 android:id="@+id/img_lugares"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/canaldepanama" />
         </androidx.cardview.widget.CardView>
@@ -29,12 +28,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
@@ -50,7 +50,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="@color/black" />
 
             <ImageView
                 android:id="@+id/img_like"
@@ -64,7 +65,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
-                android:text="lbl_like" />
+                android:text="lbl_like"
+                android:textColor="@color/black" />
 
             <ImageView
                 android:id="@+id/img_compartir"
