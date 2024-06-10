@@ -1,10 +1,11 @@
 package com.lagn.turisapp;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class atv_info_sitios extends AppCompatActivity {
  Toolbar toolbar;
  TextView lbl_info_titulo;
+ ImageView img_infoSitio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +33,11 @@ public class atv_info_sitios extends AppCompatActivity {
 
 
         toolbar = findViewById(R.id.toolbar);
+        img_infoSitio = findViewById(R.id.img_infoSitio);
         lbl_info_titulo=findViewById(R.id.lbl_info_titulo);
         lbl_info_titulo.setText(getIntent().getStringExtra("titulo"));
+        //img_infoSitio.setImageDrawable(getIntent().getParcelableExtra("lugares_imagen"));
+
 
         setSupportActionBar(toolbar);
        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24);
