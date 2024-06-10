@@ -18,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class atv_info_sitios extends AppCompatActivity {
  Toolbar toolbar;
- TextView lbl_info_titulo;
+ TextView lbl_info_titulo,lbl_detalles;
  ImageView img_infoSitio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +30,14 @@ public class atv_info_sitios extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
         toolbar = findViewById(R.id.toolbar);
         img_infoSitio = findViewById(R.id.img_infoSitio);
         lbl_info_titulo=findViewById(R.id.lbl_info_titulo);
+        lbl_detalles = findViewById(R.id.lbl_detalles);
+
+
         lbl_info_titulo.setText(getIntent().getStringExtra("titulo"));
+        lbl_detalles.setText(getIntent().getStringExtra("detalles"));
         //img_infoSitio.setImageDrawable(getIntent().getParcelableExtra("lugares_imagen"));
 
 

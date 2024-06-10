@@ -44,6 +44,8 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull SitiosAdapter.ViewHolder holder, int position) {
+
+
         holder.lbl_titulo.setText(lista.get(position).getTitulo());
         holder.lbl_autor.setText(lista.get(position).getAutor());
         holder.lbl_like.setText(String.valueOf(lista.get(position).getMegusta()));
@@ -65,9 +67,12 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
            @Override
            public void onClick(View view) {
                Drawable imagenDrawable = lista.get(position).getImagen();
-               Bitmap bitmapImagen = ((BitmapDrawable) imagenDrawable).getBitmap();
+               //Bitmap bitmapImagen = Bitmap.createBitmap(imagenDrawable);
+               Log.d("IMG_DEBUG", "Sitio leído - Título: " + imagenDrawable);
                Intent intent = new Intent(contexto,atv_info_sitios.class);
                intent.putExtra("titulo",lista.get(position).getTitulo());
+               intent.putExtra("detalles",lista.get(position).getDetalles());
+
                //intent.putExtra("lugares_imagen", bitmapImagen);
                contexto.startActivity(intent);
            }
