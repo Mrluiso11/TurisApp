@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Parcelable;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,20 +65,30 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
        });
 
 
-       holder.img_lugares.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Drawable imagenDrawable = lista.get(position).getImagen();
-               //Bitmap bitmapImagen = Bitmap.createBitmap(imagenDrawable);
-               Log.d("IMG_DEBUG", "Sitio leído - Título: " + imagenDrawable);
-               Intent intent = new Intent(contexto,atv_info_sitios.class);
-               intent.putExtra("titulo",lista.get(position).getTitulo());
-               intent.putExtra("detalles",lista.get(position).getDetalles());
+        holder.img_lugares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Drawable imagenDrawable = lista.get(position).getImagen();
+                Bitmap mapadebits = ((BitmapDrawable) imagenDrawable).getBitmap();
+                String direccion = MediaStore.Images.Media.insertImage(contexto.getContentResolver(), mapadebits, "Titulo", "Descripcion");
+                if (direccion == null) {
+                    Log.e("IMG_ERROR", "Error al insertar la imagen en la galería");
+                    return;
+                }
+                Uri imagenUri = Uri.parse(direccion);
 
-               //intent.putExtra("lugares_imagen", bitmapImagen);
-               contexto.startActivity(intent);
-           }
-       });
+                Log.d("IMG_DEBUG", "Imagen insertada - Dirección: " + direccion);
+
+                Intent intent = new Intent(contexto, atv_info_sitios.class);
+                intent.setType("image/jpeg");
+                intent.putExtra(Intent.EXTRA_STREAM, imagenUri);
+                intent.putExtra("titulo", lista.get(position).getTitulo());
+                intent.putExtra("detalles", lista.get(position).getDetalles());
+
+                contexto.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

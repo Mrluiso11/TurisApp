@@ -1,7 +1,10 @@
 package com.lagn.turisapp;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -38,8 +41,13 @@ public class atv_info_sitios extends AppCompatActivity {
 
         lbl_info_titulo.setText(getIntent().getStringExtra("titulo"));
         lbl_detalles.setText(getIntent().getStringExtra("detalles"));
-        //img_infoSitio.setImageDrawable(getIntent().getParcelableExtra("lugares_imagen"));
-
+        Intent intent = getIntent();
+        Uri imagenUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        if (imagenUri != null) {
+            img_infoSitio.setImageURI(imagenUri);
+        } else {
+            Log.e("IMG_ERROR", "No se pudo obtener el URI de la imagen");
+        }
 
         setSupportActionBar(toolbar);
        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24);
