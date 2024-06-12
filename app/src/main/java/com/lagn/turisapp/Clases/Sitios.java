@@ -6,6 +6,7 @@
         private String titulo;
         private String autor;
         private String detalles;
+        private String telefono;
         private int megusta;
         private Drawable imagen;
         private Drawable icono;
@@ -13,10 +14,11 @@
         public Sitios() {
         }
 
-        public Sitios(String titulo, String autor, String detalles, int megusta, Drawable imagen, Drawable icono) {
+        public Sitios(String titulo, String autor, String detalles, String telefono, int megusta, Drawable imagen, Drawable icono) {
             this.titulo = titulo;
             this.autor = autor;
             this.detalles = detalles;
+            this.telefono = telefono;
             this.megusta = megusta;
             this.imagen = imagen;
             this.icono = icono;
@@ -46,6 +48,14 @@
             this.detalles = detalles;
         }
 
+        public String getTelefono() {
+            return telefono;
+        }
+
+        public void setTelefono(String telefono) {
+            this.telefono = telefono;
+        }
+
         public int getMegusta() {
             return megusta;
         }
@@ -69,6 +79,4 @@
         public void setIcono(Drawable icono) {
             this.icono = icono;
         }
-
-
     }

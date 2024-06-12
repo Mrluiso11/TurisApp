@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -38,10 +39,10 @@ public class atv_info_sitios extends AppCompatActivity {
         lbl_info_titulo=findViewById(R.id.lbl_info_titulo);
         lbl_detalles = findViewById(R.id.lbl_detalles);
 
-
+        Intent intent = getIntent();
         lbl_info_titulo.setText(getIntent().getStringExtra("titulo"));
         lbl_detalles.setText(getIntent().getStringExtra("detalles"));
-        Intent intent = getIntent();
+
         Uri imagenUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imagenUri != null) {
             img_infoSitio.setImageURI(imagenUri);
@@ -65,6 +66,14 @@ public class atv_info_sitios extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.btn_telefono) {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:"+ getIntent().getStringExtra("telefono")));
+            startActivity(intent);}
+        else if (item.getItemId() == R.id.btn_location) {
+            Toast.makeText(this, "Ubicación", Toast.LENGTH_SHORT).show();
+        }
         return super.onOptionsItemSelected(item);
     }
 }

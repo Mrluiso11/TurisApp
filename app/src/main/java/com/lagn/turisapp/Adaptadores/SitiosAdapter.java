@@ -99,10 +99,13 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
 
                         // Crear intent para iniciar la nueva actividad
                         Intent intent = new Intent(contexto, atv_info_sitios.class);
+                        Intent intent2 = new Intent(contexto, atv_info_sitios.class);
                         intent.setType("image/jpeg");
                         intent.putExtra(Intent.EXTRA_STREAM, uri);
                         intent.putExtra("titulo", lista.get(position).getTitulo());
                         intent.putExtra("detalles", lista.get(position).getDetalles());
+                        intent.putExtra("telefono", lista.get(position).getTelefono());
+
 
                         contexto.startActivity(intent);
                     } catch (IOException e) {
