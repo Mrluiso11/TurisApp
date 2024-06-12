@@ -75,7 +75,7 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
                 Bitmap mapadebits = ((BitmapDrawable) imagenDrawable).getBitmap();
 
 
-                String fileName = "imagen_" + ".jpg";
+                String fileName = "imagen_" +  System.currentTimeMillis()+".jpg";
 
                 // Crear ContentValues para los datos de la imagen
                 ContentValues values = new ContentValues();
@@ -83,6 +83,8 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
                 values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
                 values.put(MediaStore.Images.Media.DESCRIPTION, "Descripcion");
                 values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+                values.put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis() / 1000);
+                values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
 
                 // Insertar la imagen en el MediaStore
                 Uri uri = contexto.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);

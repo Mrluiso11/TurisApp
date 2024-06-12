@@ -66,13 +66,15 @@ public class atv_info_sitios extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent = new Intent();
         if (item.getItemId() == R.id.btn_telefono) {
-            Intent intent = new Intent();
             intent.setAction(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:"+ getIntent().getStringExtra("telefono")));
             startActivity(intent);}
         else if (item.getItemId() == R.id.btn_location) {
-            Toast.makeText(this, "Ubicación", Toast.LENGTH_SHORT).show();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("google.navigation:q="+getIntent().getStringExtra("titulo")));
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
