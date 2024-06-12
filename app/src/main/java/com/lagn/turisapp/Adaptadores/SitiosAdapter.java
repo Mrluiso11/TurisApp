@@ -1,5 +1,6 @@
 package com.lagn.turisapp.Adaptadores;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,6 +24,8 @@ import com.lagn.turisapp.Clases.Sitios;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder> {
@@ -70,24 +73,47 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
             public void onClick(View view) {
                 Drawable imagenDrawable = lista.get(position).getImagen();
                 Bitmap mapadebits = ((BitmapDrawable) imagenDrawable).getBitmap();
-                String direccion = MediaStore.Images.Media.insertImage(contexto.getContentResolver(), mapadebits, "Titulo", "Descripcion");
-                if (direccion == null) {
+
+
+                String fileName = "imagen_" + ".jpg";
+
+                // Crear ContentValues para los datos de la imagen
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Images.Media.TITLE, "Titulo");
+                values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
+                values.put(MediaStore.Images.Media.DESCRIPTION, "Descripcion");
+                values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+
+                // Insertar la imagen en el MediaStore
+                Uri uri = contexto.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
+                if (uri != null) {
+                    try {
+                        OutputStream outputStream = contexto.getContentResolver().openOutputStream(uri);
+                        mapadebits.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                        if (outputStream != null) {
+                            outputStream.close();
+                        }
+
+                        Log.d("IMG_DEBUG", "Imagen insertada - URI: " + uri.toString());
+
+                        // Crear intent para iniciar la nueva actividad
+                        Intent intent = new Intent(contexto, atv_info_sitios.class);
+                        intent.setType("image/jpeg");
+                        intent.putExtra(Intent.EXTRA_STREAM, uri);
+                        intent.putExtra("titulo", lista.get(position).getTitulo());
+                        intent.putExtra("detalles", lista.get(position).getDetalles());
+
+                        contexto.startActivity(intent);
+                    } catch (IOException e) {
+                        Log.e("IMG_ERROR", "Error al guardar la imagen: " + e.getMessage());
+                    }
+                } else {
                     Log.e("IMG_ERROR", "Error al insertar la imagen en la galería");
-                    return;
                 }
-                Uri imagenUri = Uri.parse(direccion);
-
-                Log.d("IMG_DEBUG", "Imagen insertada - Dirección: " + direccion);
-
-                Intent intent = new Intent(contexto, atv_info_sitios.class);
-                intent.setType("image/jpeg");
-                intent.putExtra(Intent.EXTRA_STREAM, imagenUri);
-                intent.putExtra("titulo", lista.get(position).getTitulo());
-                intent.putExtra("detalles", lista.get(position).getDetalles());
-
-                contexto.startActivity(intent);
             }
         });
+
 
     }
 
