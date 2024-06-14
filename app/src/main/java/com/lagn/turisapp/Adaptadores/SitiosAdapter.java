@@ -71,7 +71,12 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
         holder.img_lugares.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Drawable imagenDrawable = lista.get(position).getImagen();
+                Intent intent = new Intent(contexto, atv_info_sitios.class);
+                intent.putExtra("id", String.valueOf(lista.get(position).getId()));
+                contexto.startActivity(intent);
+
+                /*
+               Drawable imagenDrawable = lista.get(position).getImagen();
                 Bitmap mapadebits = ((BitmapDrawable) imagenDrawable).getBitmap();
 
 
@@ -115,7 +120,9 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.ViewHolder
                     }
                 } else {
                     Log.e("IMG_ERROR", "Error al insertar la imagen en la galería");
-                }
+                }*/
+
+
             }
         });
 

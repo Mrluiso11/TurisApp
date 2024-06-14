@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             JSONArray jsonArray = new JSONArray(json);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+                int id = jsonObject.getInt("id");
                 String titulo = jsonObject.getString("titulo");
                 String autor = jsonObject.getString("autor");
                 String detalles = jsonObject.getString("detalles");
@@ -93,11 +94,11 @@ public class MainActivity extends AppCompatActivity {
                 Drawable iconoDrawable = iconoResource != 0 ? ResourcesCompat.getDrawable(context.getResources(), iconoResource, null) : null;
 
                 // Crear el objeto Sitios y agregarlo a la lista
-                Sitios sitio = new Sitios(titulo, autor, detalles, telefono,megusta, imagenDrawable, iconoDrawable);
+                Sitios sitio = new Sitios(id ,titulo, autor, detalles, telefono,megusta, imagenDrawable, iconoDrawable);
                 listaSitios.add(sitio);
 
                 // Registro de depuración
-                Log.d("JSON_DEBUG", "Sitio leído - Título: " + titulo + ", Autor: " + autor + ", Detalles: " + detalles + ",telefono:"+telefono+", Me gusta: " + megusta);
+                Log.d("JSON_DEBUG", "id: " + id +"Sitio leído - Título: " + titulo + ", Autor: " + autor + ", Detalles: " + detalles + ",telefono:"+telefono+", Me gusta: " + megusta+" image"+iconoDrawable);
             }
         } catch (IOException | JSONException e) {
             e.printStackTrace();

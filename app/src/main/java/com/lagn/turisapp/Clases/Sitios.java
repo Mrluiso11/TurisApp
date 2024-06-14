@@ -3,6 +3,7 @@
     import android.graphics.drawable.Drawable;
 
     public class Sitios {
+        private int id;
         private String titulo;
         private String autor;
         private String detalles;
@@ -14,7 +15,8 @@
         public Sitios() {
         }
 
-        public Sitios(String titulo, String autor, String detalles, String telefono, int megusta, Drawable imagen, Drawable icono) {
+        public Sitios(int id, String titulo, String autor, String detalles, String telefono, int megusta, Drawable imagen, Drawable icono) {
+            this.id = id;
             this.titulo = titulo;
             this.autor = autor;
             this.detalles = detalles;
@@ -78,5 +80,13 @@
 
         public void setIcono(Drawable icono) {
             this.icono = icono;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
         }
     }
