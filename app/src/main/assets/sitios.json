@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "titulo": "Canal Panama",
+    "autor": "Michael Cordones",
+    "detalles": "El Canal de Panamá, una maravilla de la ingeniería, ofrece una experiencia única para los turistas. Desde sus miradores, se pueden observar los barcos transitando por las esclusas, una vista impresionante que ilustra el funcionamiento del canal. Los visitantes pueden explorar el Centro de Visitantes de Miraflores para aprender sobre la historia y el impacto del canal en el comercio mundial. Los tours en barco permiten a los turistas navegar por las aguas del canal, ofreciendo una perspectiva privilegiada de su funcionamiento. Además, el Canal de Panamá ofrece oportunidades para la observación de la vida silvestre, con áreas protegidas que albergan una diversidad de especies. En resumen, el Canal de Panamá es un destino turístico fascinante que combina historia, ingeniería y naturaleza en un solo lugar.",
+    "megusta": 23,
+    "imagen": "canaldepanama",
+    "icono": "user",
+    "telefono":"123456789"
+  },
+  {
+    "id": 2,
+  "titulo": "Boquete",
+  "autor": "Edgardo Hernandez",
+  "detalles": "Boquete, en la provincia de Chiriquí, es un paraíso montañoso que atrae a los amantes de la naturaleza y la aventura. Sus exuberantes paisajes ofrecen oportunidades para practicar senderismo en la famosa Ruta de los Quetzales o escalar el Volcán Barú, la montaña más alta de Panamá. Los aficionados a la adrenalina pueden disfrutar del rafting en el río Chiriquí Viejo o del canopy en los densos bosques nubosos. Además, Boquete es conocido por su café de alta calidad, y los turistas pueden visitar fincas cafetaleras para aprender sobre el proceso de producción y degustar el café fresco. Con su clima fresco y su ambiente relajado, Boquete es un destino perfecto para desconectar y conectarse con la naturaleza.",
+  "megusta": 3,
+  "imagen": "boquete",
+  "icono": "user2",
+    "telefono":"987654321"
+}
+]
